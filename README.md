@@ -1,11 +1,11 @@
 # Simple Todo List
 
 ---
-<h3>Project : simple_todolist_2</h3>
+<h3>Project : simple_todolist_3</h3>
 <br/>
-Skills : React, Redux
+Skills : React, Redux & Spring Boot
 <br/>
-Start at 2021/04/19
+Start at 2021/04/20
 
 ---
 
@@ -16,3 +16,4 @@ References
     - Redux Official Page : https://ko.redux.js.org
     - Redux TodoList Example : https://dobbit.github.io/redux/basics/ExampleTodoList.html
     - Redux Cartoon : http://bestalign.github.io/2015/10/26/cartoon-intro-to-redux/
+- Spring Boot
