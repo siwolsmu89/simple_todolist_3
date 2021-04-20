@@ -12,22 +12,27 @@ class App extends Component {
         const { dispatch, todos, colors } = this.props;
         return (
             <div>
-                <TodoTemplate palette={
-                    (<Palette
-                        colors={ colors }
-                        onSelect={ colorValue => dispatch(selectColorAction(colorValue)) }
-                    />)}
-                    form={(<Form
-                        colors={ colors }
-                        onCreate={ (text, colorValue) => dispatch(addTodoAction(text, colorValue)) }
-                    />)}
+                <TodoTemplate
+                    palette={(
+                        <Palette
+                            colors={ colors }
+                            onSelect={ colorValue => dispatch(selectColorAction(colorValue)) }
+                        />
+                    )}
+                    form={(
+                        <Form
+                            colors={ colors }
+                            onCreate={ (text, colorValue) => dispatch(addTodoAction(text, colorValue)) }
+                        />
+                    )}
                     todoList={(
                         <TodoItemList
                             todos={ todos }
                             onToggle={ id => dispatch(checkTodoAction(id)) }
                             onRemove={ id => dispatch(removeTodoAction(id)) }
                         />
-                    )} />
+                    )}
+                />
             </div>
         );
     }

@@ -7,7 +7,7 @@ class TodoTemplate extends Component {
         return (
             <main className="todo-list-template">
                 <div className="title">
-                    오늘 할 일
+                    Simple TodoList 3
                 </div>
                 <section className="palette-wrapper">
                     { palette }
