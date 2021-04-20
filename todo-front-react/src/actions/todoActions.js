@@ -3,7 +3,6 @@ export const CHECK_TODO = 'CHECK_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
 export function addTodoAction(text, colorValue) {
-    console.log("text :: ", text);
     return { type: ADD_TODO, text, colorValue }
 }
 
