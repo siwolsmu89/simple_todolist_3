@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper>
 <mapper namespace="ms.kwon.simple.todolist.mapper.TodoMapper">
-    <select id="getTodolist" resultType="ms.kwon.simple.todolist.vo.Todo">
+    <select id="getTodolist" resultType="Todo">
         SELECT id, text, colorValue, checked
         FROM todos
         ORDER BY id DESC
     </select>
-    <insert id="addTodo" parameterType="ms.kwon.simple.todolist.vo.Todo">
+    <insert id="addTodo" parameterType="Todo">
         INSERT INTO todos
             (id, text, colorValue, checked)
         VALUES
             (#{id}, #{text}, #{colorValue}, #{checked})
     </insert>
-    <update id="checkTodo" parameterType="ms.kwon.simple.todolist.vo.Todo">
+    <update id="checkTodo" parameterType="Todo">
         UPDATE todos
         SET
             checked = #{checked}
         WHERE
             id = #{id}
     </update>
-    <delete id="deleteTodo" parameterType="ms.kwon.simple.todolist.vo.Todo">
+    <delete id="deleteTodo" parameterType="Todo">
         DELETE FROM todos
         WHERE id = #{id}
     </delete>
