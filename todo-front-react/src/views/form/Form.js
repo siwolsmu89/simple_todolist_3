@@ -16,7 +16,6 @@ class Form extends Component {
             }
         };
 
-
         return (
             <div className="form">
                 <input ref={ node => { input = node } } onKeyPress={ handleKeyPress }/>
