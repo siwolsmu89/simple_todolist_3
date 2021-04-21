@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("TodoService")
 public class TodoService {
 
     @Autowired
@@ -27,5 +27,9 @@ public class TodoService {
 
     public List<Todo> getTodolist() {
         return todoMapper.getTodolist();
+    }
+
+    public String getTest() {
+        return todoMapper.getTest();
     }
 }
