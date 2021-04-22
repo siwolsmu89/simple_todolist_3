@@ -26,7 +26,10 @@ public class TodoService {
     }
 
     public List<Todo> getTodolist() {
-        return todoMapper.getTodolist();
+        System.out.println("### TodoService :: getTodolist");
+        List<Todo> result = todoMapper.getTodolist();
+        System.out.println(result.toString());
+        return result;
     }
 
     public String getTest() {
