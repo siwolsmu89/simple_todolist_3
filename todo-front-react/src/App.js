@@ -6,6 +6,7 @@ import TodoTemplate from "./views/todo-template/TodoTemplate";
 import Palette from "./views/palette/Palette";
 import Form from "./views/form/Form";
 import TodoItemList from "./views/todo-item-list/TodoItemList";
+import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
     render() {

@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
 import { Provider } from 'react-redux';
 import rootReducer from "./reducers/rootReducer";
+import { Router, Route, browserHistory } from 'react-router';
 
 let store = createStore(rootReducer);
 
 render(
     <Provider store={store}>
-        <App />
+        <Router>
+            <Route path='/' component={ App } />
+        </Router>
     </Provider>,
     document.getElementById('root')
 );
