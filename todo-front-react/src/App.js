@@ -1,12 +1,12 @@
 import { Component } from 'react';
 import { selectColorAction } from "./actions/colorActions";
-import { addTodoAction, checkTodoAction, removeTodoAction } from "./actions/todoActions";
+import {addTodoAction, checkTodoAction, getTodoAction, removeTodoAction} from "./actions/todoActions";
 import { connect } from "react-redux";
 import TodoTemplate from "./views/todo-template/TodoTemplate";
 import Palette from "./views/palette/Palette";
 import Form from "./views/form/Form";
 import TodoItemList from "./views/todo-item-list/TodoItemList";
-import { BrowserRouter } from 'react-router-dom';
+import axios from "axios";
 
 class App extends Component {
     render() {
@@ -33,6 +33,7 @@ class App extends Component {
                             onRemove={ id => dispatch(removeTodoAction(id)) }
                         />
                     )}
+                    onClick={ () => { axios.get('todo/getList.do').then((res) => dispatch(getTodoAction(res.data))) } }
                 />
             </div>
         );

@@ -1,11 +1,4 @@
-import { ADD_TODO, CHECK_TODO, REMOVE_TODO} from "../actions/todoActions";
-import axios from 'axios';
-
-function getTodolist() {
-    fetch("/todo/getList.do")
-        .then(response => response.json())
-        .then(json => { return json });
-}
+import {ADD_TODO, CHECK_TODO, GET_TODO, REMOVE_TODO} from "../actions/todoActions";
 
 export function todos(state, action) {
     const { todos } = state;
@@ -34,7 +27,9 @@ export function todos(state, action) {
         case REMOVE_TODO:
             // filter 함수는 기존 배열에서 신규 배열을 만들어 반환하므로 todos 객체를 수정하는 것이 아님
             return todos.filter(todo => todo.id !== action.id);
+        case GET_TODO:
+            return action.todos;
         default:
-            return getTodolist();
+            return todos;
     }
 }

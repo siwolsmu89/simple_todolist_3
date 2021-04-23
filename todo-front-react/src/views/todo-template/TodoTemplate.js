@@ -3,10 +3,10 @@ import './TodoTemplate.css';
 
 class TodoTemplate extends Component {
     render() {
-        const { palette, form, todoList } = this.props;
+        const { palette, form, todoList, onClick } = this.props;
         return (
             <main className="todo-list-template">
-                <div className="title">
+                <div className="title" onClick={ onClick }>
                     Simple TodoList 3
                 </div>
                 <section className="palette-wrapper">
