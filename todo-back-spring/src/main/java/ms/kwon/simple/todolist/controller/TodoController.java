@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import ms.kwon.simple.todolist.service.TodoService;
 import ms.kwon.simple.todolist.vo.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,13 @@ public class TodoController {
     }
 
     @RequestMapping("/add.do")
-    public void addTodo(@RequestParam Todo todo){
+    public void addTodo(@RequestBody Todo todo){
+        System.out.println("@@@ TodoController :: add.do start");
+        String text = todo.getText();
+        String colorValue = todo.getColorValue();
+        System.out.println("id: " + todo.getId());
+        System.out.println("text: " + text);
+        System.out.println("color: " + colorValue);
         todoService.addTodo(todo);
     }
 

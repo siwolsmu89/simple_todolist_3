@@ -22,8 +22,16 @@ class App extends Component {
                     )}
                     form={(
                         <Form
+                            todos={ todos }
                             colors={ colors }
-                            onCreate={ (text, colorValue) => dispatch(addTodoAction(text, colorValue)) }
+                            onCreate={ (nextId, text, colorValue) => {
+                                axios({
+                                    url: 'todo/add.do',
+                                    method: 'post',
+                                    dataType: 'json',
+                                    data: { id: nextId, text, colorValue },
+                                }).then(dispatch(addTodoAction(nextId, text, colorValue)))
+                            } }
                         />
                     )}
                     todoList={(
@@ -33,7 +41,10 @@ class App extends Component {
                             onRemove={ id => dispatch(removeTodoAction(id)) }
                         />
                     )}
-                    onClick={ () => { axios.get('todo/getList.do').then((res) => dispatch(getTodoAction(res.data))) } }
+                    getList={ () => {
+                        axios.get('todo/getList.do')
+                        .then((res) => dispatch(getTodoAction(res.data)))
+                    } }
                 />
             </div>
         );
