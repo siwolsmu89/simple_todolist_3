@@ -4,11 +4,7 @@
     <select id="getTodolist" resultType="Todo">
         SELECT id, text, colorValue, isChecked
         FROM todos
-        ORDER BY id DESC
-    </select>
-    <select id="getTest" resultType="java.lang.String">
-        SELECT '1'
-        FROM dual
+        ORDER BY id ASC
     </select>
     <insert id="addTodo" parameterType="Todo">
         INSERT INTO todos
