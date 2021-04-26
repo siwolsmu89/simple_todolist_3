@@ -4,13 +4,8 @@ export function todos(state, action) {
     const { todos } = state;
     switch(action.type) {
         case ADD_TODO:
-            let lastId = -1;
-            for (const todo of todos) {
-                lastId = lastId <= todo.id ? todo.id : lastId;
-            }
-
             const newTodo = {
-                id: lastId + 1,
+                id: action.id,
                 text: action.text,
                 checked: false,
                 colorValue: action.colorValue
