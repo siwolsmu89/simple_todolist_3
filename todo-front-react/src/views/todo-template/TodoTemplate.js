@@ -2,11 +2,16 @@ import {Component} from "react";
 import './TodoTemplate.css';
 
 class TodoTemplate extends Component {
+    componentDidMount() {
+        const { getList } = this.props;
+        getList();
+    }
+
     render() {
-        const { palette, form, todoList, onClick } = this.props;
+        const { palette, form, todoList } = this.props;
         return (
             <main className="todo-list-template">
-                <div className="title" onClick={ onClick }>
+                <div className="title">
                     Simple TodoList 3
                 </div>
                 <section className="palette-wrapper">
