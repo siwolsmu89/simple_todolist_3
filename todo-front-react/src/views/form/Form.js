@@ -18,7 +18,8 @@ class Form extends Component {
         const handleKeyPress = (e) => {
             if (e.key === 'Enter') {
                 const text = input.value;
-                onCreate(nextId, text, activeColorValue)
+                onCreate(nextId, text, activeColorValue);
+                input.value = '';
             }
         };
 
