@@ -37,7 +37,14 @@ class App extends Component {
                     todoList={(
                         <TodoItemList
                             todos={ todos }
-                            onToggle={ id => dispatch(checkTodoAction(id)) }
+                            onToggle={ id => {
+                                axios({
+                                    url: 'todo/check.do',
+                                    method: 'post',
+                                    dataType: 'json',
+                                    data: { id }
+                                }).then(dispatch(checkTodoAction(id)))
+                            } }
                             onRemove={ id => dispatch(removeTodoAction(id)) }
                         />
                     )}
