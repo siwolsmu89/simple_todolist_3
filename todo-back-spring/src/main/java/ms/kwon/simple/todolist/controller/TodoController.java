@@ -6,7 +6,6 @@ import ms.kwon.simple.todolist.vo.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
@@ -27,17 +26,24 @@ public class TodoController {
     @RequestMapping("/add.do")
     public void addTodo(@RequestBody Todo todo){
         System.out.println("@@@ TodoController :: add.do start");
+
+        int id = todo.getId();
         String text = todo.getText();
         String colorValue = todo.getColorValue();
-        System.out.println("id: " + todo.getId());
+
+        System.out.println("id: " + id);
         System.out.println("text: " + text);
-        System.out.println("color: " + colorValue);
+        System.out.println("color: " +colorValue);
+
         todoService.addTodo(todo);
+        System.out.println("@@@ TodoController :: add.do end");
     }
 
     @RequestMapping("/check.do")
-    public void checkTodo(@RequestParam Todo todo) {
-        todoService.checkTodo(todo);
+    public void toggleTodoCheck(@RequestBody Todo todo) {
+        System.out.println("@@@ TodoController :: check.do start");
+        todoService.toggleTodoCheck(todo.getId());
+        System.out.println("@@@ TodoController :: check.do end");
     }
 
     @RequestMapping("/getList.do")
@@ -45,9 +51,7 @@ public class TodoController {
         System.out.println("@@@ TodoController :: getTodolist.do start");
 
         List<Todo> todolist = todoService.getTodolist();
-        for (Todo todo : todolist) {
-            System.out.println("text: " + todo.getText());
-        }
+
         Gson gson = new Gson();
         String result = gson.toJson(todolist);
 

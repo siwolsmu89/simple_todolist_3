@@ -14,15 +14,16 @@ public class TodoService {
     private TodoMapper todoMapper;
 
     public void addTodo(Todo todo) {
+        System.out.println("### TodoService :: addTodo");
+        List<Todo> currentTodos = todoMapper.getTodolist();
+        for (Todo currentTodo : currentTodos) {
+            if (todo.getId() == currentTodo.getId()) {
+                System.out.println("### TodoService :: addTodo Error - Duplicated ID");
+                return;
+            }
+        }
+
         todoMapper.addTodo(todo);
-    }
-
-    public void checkTodo(Todo todo) {
-        todoMapper.checkTodo(todo);
-    }
-
-    public void removeTodo(Todo todo) {
-        todoMapper.removeTodo(todo);
     }
 
     public List<Todo> getTodolist() {
@@ -32,7 +33,28 @@ public class TodoService {
         return result;
     }
 
-    public String getTest() {
-        return todoMapper.getTest();
+    public void toggleTodoCheck(int id) {
+        System.out.println("### TodoService :: toggleTodoCheck");
+        Todo todo = todoMapper.getTodoById(id);
+        if (todo == null) {
+            System.out.println("### TodoService :: toggleTodoCheck Error - No Such ID exists");
+            return;
+        }
+
+        todo.setChecked(!todo.isChecked());
+        todoMapper.toggleTodoCheck(todo);
     }
+
+    public void removeTodo(int id) {
+        System.out.println("### TodoService :: removeTodo");
+        Todo todo = todoMapper.getTodoById(id);
+        if (todo == null) {
+            System.out.println("### TodoService :: removeTodo Error - No Such ID exists");
+            return;
+        }
+
+        todoMapper.removeTodo(id);
+    }
+
+
 }
