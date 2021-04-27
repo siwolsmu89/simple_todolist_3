@@ -45,7 +45,14 @@ class App extends Component {
                                     data: { id }
                                 }).then(dispatch(checkTodoAction(id)))
                             } }
-                            onRemove={ id => dispatch(removeTodoAction(id)) }
+                            onRemove={ id => {
+                                axios({
+                                    url: 'todo/remove.do',
+                                    method: 'post',
+                                    dataType: 'json',
+                                    data: { id }
+                                }).then(dispatch(removeTodoAction(id)))
+                            } }
                         />
                     )}
                     getList={ () => {

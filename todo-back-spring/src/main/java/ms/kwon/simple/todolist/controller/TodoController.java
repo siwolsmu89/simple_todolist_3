@@ -39,13 +39,6 @@ public class TodoController {
         System.out.println("@@@ TodoController :: add.do end");
     }
 
-    @RequestMapping("/check.do")
-    public void toggleTodoCheck(@RequestBody Todo todo) {
-        System.out.println("@@@ TodoController :: check.do start");
-        todoService.toggleTodoCheck(todo.getId());
-        System.out.println("@@@ TodoController :: check.do end");
-    }
-
     @RequestMapping("/getList.do")
     public String getTodolist() {
         System.out.println("@@@ TodoController :: getTodolist.do start");
@@ -59,4 +52,19 @@ public class TodoController {
         System.out.println("@@@ TodoController :: getTodolist.do end");
         return result;
     }
+
+    @RequestMapping("/check.do")
+    public void toggleTodoCheck(@RequestBody Todo todo) {
+        System.out.println("@@@ TodoController :: check.do start");
+        todoService.toggleTodoCheck(todo.getId());
+        System.out.println("@@@ TodoController :: check.do end");
+    }
+
+    @RequestMapping("/remove.do")
+    public void removeTodo(@RequestBody Todo todo) {
+        System.out.println("@@@ TodoController :: remove.do start");
+        todoService.removeTodo(todo.getId());
+        System.out.println("@@@ TodoController :: remove.do end");
+    }
+
 }
