@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 public interface TodoMapper {
     void addTodo(Todo todo);
-    void checkTodo(Todo todo);
-    void removeTodo(Todo todo);
+    Todo getTodoById(int id);
     List<Todo> getTodolist();
-    String getTest();
+    void toggleTodoCheck(Todo todo);
+    void removeTodo(int id);
 }
