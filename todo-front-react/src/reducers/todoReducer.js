@@ -7,7 +7,7 @@ export function todos(state, action) {
             const newTodo = {
                 id: action.id,
                 text: action.text,
-                checked: false,
+                isChecked: false,
                 colorValue: action.colorValue
             };
 
@@ -16,7 +16,7 @@ export function todos(state, action) {
             const todosAfterCheck = [...todos];
 
             const checkIndex = todosAfterCheck.findIndex(todo => todo.id === action.id);
-            todosAfterCheck[checkIndex].checked = !todosAfterCheck[checkIndex].checked;
+            todosAfterCheck[checkIndex].isChecked = !todosAfterCheck[checkIndex].isChecked;
 
             return todosAfterCheck;
         case REMOVE_TODO:
